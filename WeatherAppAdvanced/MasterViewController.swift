@@ -62,7 +62,8 @@ class MasterViewController: UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let object = forecasts[indexPath.row]
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
+                let uiNav = segue.destination as! UINavigationController
+                let controller = uiNav.topViewController as! DetailViewController
                 //controller.detailDescriptionLabel.text = object.first?.city
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
