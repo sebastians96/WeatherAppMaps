@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class MasterViewController: UITableViewController,AddForecast {
 
     var detailViewController: DetailViewController? = nil
     var forecasts = [[WeatherData]]()
@@ -20,8 +20,8 @@ class MasterViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         navigationItem.leftBarButtonItem = editButtonItem
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
+//        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
+//        navigationItem.rightBarButtonItem = addButton
         if let split = splitViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
@@ -42,32 +42,34 @@ class MasterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @objc
-    func insertNewObject(_ sender: Any) {
-        var newForecast : [WeatherData] = []
-        dispatchGroup.enter()
-        weatherFetcher.fetchWeather(lat: "37.983810",lon: "23.727539") { [weak self] (data:[WeatherData]) in
-            newForecast = data
-            self?.dispatchGroup.leave()
-        }
-
-        forecasts.insert(newForecast, at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
-    }
+//    @objc
+//    func insertNewObject(_ sender: Any) {
+//        var newForecast : [WeatherData] = []
+//        dispatchGroup.enter()
+//        weatherFetcher.fetchWeather(lat: "37.983810",lon: "23.727539") { [weak self] (data:[WeatherData]) in
+//            newForecast = data
+//            self?.dispatchGroup.leave()
+//        }
+//
+//        forecasts.insert(newForecast, at: 0)
+//        let indexPath = IndexPath(row: 0, section: 0)
+//        tableView.insertRows(at: [indexPath], with: .automatic)
+//    }
 
     // MARK: - Segues
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = forecasts[indexPath.row]
                 let uiNav = segue.destination as! UINavigationController
                 let controller = uiNav.topViewController as! DetailViewController
-                //controller.detailDescriptionLabel.text = object.first?.city
+                controller.forecast = forecasts[indexPath.row]
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
                 controller.navigationItem.leftItemsSupplementBackButton = true
             }
+        } else if segue.identifier == "addWeather" {
+            let destination = segue.destination as! AddViewController
+            destination.delegate = self
         }
     }
 
@@ -124,6 +126,17 @@ class MasterViewController: UITableViewController {
             self?.dispatchGroup.leave()
         }
         
+    }
+    
+    func addNew(latitude: String, longtitude: String) {
+        dispatchGroup.enter()
+        weatherFetcher.fetchWeather(lat: latitude,lon: longtitude) { [weak self] (data:[WeatherData]) in
+            self?.forecasts.append(data)
+            self?.dispatchGroup.leave()
+        }
+        dispatchGroup.notify(queue: .main){
+            self.tableView.reloadData()
+        }
     }
 
 }

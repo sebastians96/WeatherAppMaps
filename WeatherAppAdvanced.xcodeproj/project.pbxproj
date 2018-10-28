@@ -13,10 +13,9 @@
 		2B5BDFEC218423D900EF388D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B5BDFEA218423D900EF388D /* Main.storyboard */; };
 		2B5BDFEE218423D900EF388D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B5BDFED218423D900EF388D /* Assets.xcassets */; };
 		2B5BDFF1218423D900EF388D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B5BDFEF218423D900EF388D /* LaunchScreen.storyboard */; };
-		2B5BDFF9218424AF00EF388D /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BDFF8218424AE00EF388D /* TableViewCell1.swift */; };
 		2B5BDFFB218424C800EF388D /* WeatherFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BDFFA218424C700EF388D /* WeatherFetcher.swift */; };
-		2B5BDFFD218424D000EF388D /* TableViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B5BDFFC218424CF00EF388D /* TableViewCell1.xib */; };
 		2B5BDFFF2184252E00EF388D /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BDFFE2184252E00EF388D /* TableViewCell.swift */; };
+		2BB05CD821851DF80021E62A /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB05CD721851DF80021E62A /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +27,9 @@
 		2B5BDFED218423D900EF388D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2B5BDFF0218423D900EF388D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B5BDFF2218423D900EF388D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2B5BDFF8218424AE00EF388D /* TableViewCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
 		2B5BDFFA218424C700EF388D /* WeatherFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherFetcher.swift; sourceTree = "<group>"; };
-		2B5BDFFC218424CF00EF388D /* TableViewCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell1.xib; sourceTree = "<group>"; };
 		2B5BDFFE2184252E00EF388D /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		2BB05CD721851DF80021E62A /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,10 +65,9 @@
 				2B5BDFE4218423D900EF388D /* AppDelegate.swift */,
 				2B5BDFE6218423D900EF388D /* MasterViewController.swift */,
 				2B5BDFE8218423D900EF388D /* DetailViewController.swift */,
-				2B5BDFFC218424CF00EF388D /* TableViewCell1.xib */,
 				2B5BDFFA218424C700EF388D /* WeatherFetcher.swift */,
-				2B5BDFF8218424AE00EF388D /* TableViewCell1.swift */,
 				2B5BDFEA218423D900EF388D /* Main.storyboard */,
+				2BB05CD721851DF80021E62A /* AddViewController.swift */,
 				2B5BDFFE2184252E00EF388D /* TableViewCell.swift */,
 				2B5BDFED218423D900EF388D /* Assets.xcassets */,
 				2B5BDFEF218423D900EF388D /* LaunchScreen.storyboard */,
@@ -141,7 +138,6 @@
 				2B5BDFF1218423D900EF388D /* LaunchScreen.storyboard in Resources */,
 				2B5BDFEE218423D900EF388D /* Assets.xcassets in Resources */,
 				2B5BDFEC218423D900EF388D /* Main.storyboard in Resources */,
-				2B5BDFFD218424D000EF388D /* TableViewCell1.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,10 +150,10 @@
 			files = (
 				2B5BDFE9218423D900EF388D /* DetailViewController.swift in Sources */,
 				2B5BDFFB218424C800EF388D /* WeatherFetcher.swift in Sources */,
+				2BB05CD821851DF80021E62A /* AddViewController.swift in Sources */,
 				2B5BDFE7218423D900EF388D /* MasterViewController.swift in Sources */,
 				2B5BDFFF2184252E00EF388D /* TableViewCell.swift in Sources */,
 				2B5BDFE5218423D900EF388D /* AppDelegate.swift in Sources */,
-				2B5BDFF9218424AF00EF388D /* TableViewCell1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
