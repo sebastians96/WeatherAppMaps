@@ -374,45 +374,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Latitude" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bfm-qI-A9x">
-                                <rect key="frame" x="116" y="95" width="243" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ljc-KZ-eOH">
+                                <rect key="frame" x="-89" y="-54" width="278" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Longtitude" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-ss-Mfc">
-                                <rect key="frame" x="116" y="141" width="243" height="30"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CitySearchTable" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XME-9M-i64">
+                                <rect key="frame" x="16" y="126" width="343" height="521"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddCell" id="KpV-Hu-6Jh">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KpV-Hu-6Jh" id="aNZ-nh-miB">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="city" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NW5-pQ-o7q">
+                                                    <rect key="frame" x="28" y="11" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="qtz-J7-dIp" id="bv2-VI-ffs"/>
+                                    <outlet property="delegate" destination="qtz-J7-dIp" id="AbS-QW-yag"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0R2-kz-oDK">
+                                <rect key="frame" x="197" y="-54" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Search"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0h-uL-bfz">
+                                <rect key="frame" x="16" y="88" width="287" height="30"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUM-WM-jO8">
-                                <rect key="frame" x="16" y="100" width="63" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longtitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xzu-K6-Vlh">
-                                <rect key="frame" x="16" y="146" width="83" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQw-B6-QM9">
+                                <rect key="frame" x="311" y="87" width="48" height="30"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="search:" destination="qtz-J7-dIp" eventType="touchUpInside" id="vjE-9f-QZD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="qm8-6m-rkK" firstAttribute="trailing" secondItem="Bfm-qI-A9x" secondAttribute="trailing" constant="16" id="3v7-F5-YST"/>
-                            <constraint firstItem="UUM-WM-jO8" firstAttribute="leading" secondItem="qm8-6m-rkK" secondAttribute="leading" constant="16" id="8Az-38-Z1l"/>
-                            <constraint firstItem="ZHx-ss-Mfc" firstAttribute="leading" secondItem="qm8-6m-rkK" secondAttribute="leading" constant="116" id="8Wz-h8-iVz"/>
-                            <constraint firstItem="Bfm-qI-A9x" firstAttribute="top" secondItem="qm8-6m-rkK" secondAttribute="top" constant="31" id="99e-oi-Qan"/>
-                            <constraint firstItem="qm8-6m-rkK" firstAttribute="trailing" secondItem="ZHx-ss-Mfc" secondAttribute="trailing" constant="16" id="EUi-yc-nWh"/>
-                            <constraint firstItem="UUM-WM-jO8" firstAttribute="top" secondItem="8Xa-dz-zLc" secondAttribute="topMargin" constant="36" id="NVS-aK-dEN"/>
-                            <constraint firstItem="ZHx-ss-Mfc" firstAttribute="leading" secondItem="xzu-K6-Vlh" secondAttribute="trailing" constant="17" id="QVH-9e-wzI"/>
-                            <constraint firstItem="ZHx-ss-Mfc" firstAttribute="top" secondItem="qm8-6m-rkK" secondAttribute="top" constant="77" id="Xce-IS-T04"/>
-                            <constraint firstItem="xzu-K6-Vlh" firstAttribute="top" secondItem="qm8-6m-rkK" secondAttribute="top" constant="82" id="aOy-9M-lbM"/>
-                            <constraint firstItem="Bfm-qI-A9x" firstAttribute="leading" secondItem="qm8-6m-rkK" secondAttribute="leading" constant="116" id="bTl-6a-8kh"/>
-                            <constraint firstItem="Bfm-qI-A9x" firstAttribute="leading" secondItem="UUM-WM-jO8" secondAttribute="trailing" constant="37" id="kbC-c4-gRw"/>
-                            <constraint firstItem="xzu-K6-Vlh" firstAttribute="leading" secondItem="qm8-6m-rkK" secondAttribute="leading" constant="16" id="tcd-3V-gwd"/>
+                            <constraint firstItem="qm8-6m-rkK" firstAttribute="trailing" secondItem="DQw-B6-QM9" secondAttribute="trailing" constant="16" id="CLh-Vc-u3B"/>
+                            <constraint firstItem="XME-9M-i64" firstAttribute="leading" secondItem="qm8-6m-rkK" secondAttribute="leading" constant="16" id="CV6-x2-F1o"/>
+                            <constraint firstItem="DQw-B6-QM9" firstAttribute="top" secondItem="qm8-6m-rkK" secondAttribute="top" constant="23" id="IQw-ts-pbS"/>
+                            <constraint firstItem="x0h-uL-bfz" firstAttribute="top" secondItem="qm8-6m-rkK" secondAttribute="top" constant="24" id="SlT-p3-Mss"/>
+                            <constraint firstItem="XME-9M-i64" firstAttribute="top" secondItem="DQw-B6-QM9" secondAttribute="bottom" constant="9" id="YM3-Tc-UIS"/>
+                            <constraint firstItem="x0h-uL-bfz" firstAttribute="leading" secondItem="qm8-6m-rkK" secondAttribute="leading" constant="16" id="YXB-h0-LwQ"/>
+                            <constraint firstItem="qm8-6m-rkK" firstAttribute="bottom" secondItem="XME-9M-i64" secondAttribute="bottom" constant="20" id="YoE-Qh-O7k"/>
+                            <constraint firstItem="qm8-6m-rkK" firstAttribute="trailing" secondItem="XME-9M-i64" secondAttribute="trailing" constant="16" id="geP-Jl-gau"/>
+                            <constraint firstItem="qm8-6m-rkK" firstAttribute="trailing" secondItem="x0h-uL-bfz" secondAttribute="trailing" constant="72" id="lYs-Zw-x2Y"/>
+                            <constraint firstItem="XME-9M-i64" firstAttribute="top" secondItem="x0h-uL-bfz" secondAttribute="bottom" constant="8" id="zjN-0v-qEB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qm8-6m-rkK"/>
                     </view>
@@ -424,13 +450,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="latitude" destination="Bfm-qI-A9x" id="Eao-YF-FgE"/>
-                        <outlet property="longtitude" destination="ZHx-ss-Mfc" id="QJs-Aa-meV"/>
+                        <outlet property="city" destination="x0h-uL-bfz" id="Pxm-ep-SVR"/>
+                        <outlet property="tableView" destination="XME-9M-i64" id="MRd-ja-TEe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QT7-k0-s48" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1508" y="-628.33583208395805"/>
+            <point key="canvasLocation" x="1506.4000000000001" y="-629.2353823088456"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">

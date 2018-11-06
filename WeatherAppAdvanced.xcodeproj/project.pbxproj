@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B2546792190FADF0000D15B /* NameFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2546782190FADF0000D15B /* NameFetcher.swift */; };
 		2B5BDFE5218423D900EF388D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BDFE4218423D900EF388D /* AppDelegate.swift */; };
 		2B5BDFE7218423D900EF388D /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BDFE6218423D900EF388D /* MasterViewController.swift */; };
 		2B5BDFE9218423D900EF388D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BDFE8218423D900EF388D /* DetailViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B2546782190FADF0000D15B /* NameFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameFetcher.swift; sourceTree = "<group>"; };
 		2B5BDFE1218423D900EF388D /* WeatherAppAdvanced.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAppAdvanced.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5BDFE4218423D900EF388D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B5BDFE6218423D900EF388D /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		2B5BDFE3218423D900EF388D /* WeatherAppAdvanced */ = {
 			isa = PBXGroup;
 			children = (
+				2B2546782190FADF0000D15B /* NameFetcher.swift */,
 				2B5BDFE4218423D900EF388D /* AppDelegate.swift */,
 				2B5BDFE6218423D900EF388D /* MasterViewController.swift */,
 				2B5BDFE8218423D900EF388D /* DetailViewController.swift */,
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B5BDFE9218423D900EF388D /* DetailViewController.swift in Sources */,
+				2B2546792190FADF0000D15B /* NameFetcher.swift in Sources */,
 				2B5BDFFB218424C800EF388D /* WeatherFetcher.swift in Sources */,
 				2BB05CD821851DF80021E62A /* AddViewController.swift in Sources */,
 				2B5BDFE7218423D900EF388D /* MasterViewController.swift in Sources */,

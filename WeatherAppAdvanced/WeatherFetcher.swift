@@ -31,7 +31,7 @@ extension String {
 
 class WeatherFetcher {
     
-    func fetchWeather (lat: String, lon: String,completion: @escaping ((_ data: [WeatherData])-> Void)){
+    func fetchWeather (lat: String, lon: String, name: String,completion: @escaping ((_ data: [WeatherData])-> Void)){
         var forecast : [WeatherData] = []
         let  apiURL = URL(string: "https://api.darksky.net/forecast/efa3b416123aeaf88d29aa3eaa288db4/" + lat + "," + lon + "?exclude=currently,minutely,hourly,flags,alerts")
         let session = URLSession.shared
@@ -44,11 +44,11 @@ class WeatherFetcher {
                 let json = try! JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
                 let daily = json["daily"] as! [String:Any]
                 let data = daily["data"] as! [AnyObject]
-                for i in 0...7 {
+                for element in data {
                     var record: WeatherData = WeatherData()
-                    let str = json["timezone"] as! String
-                    record.city = str[7..<str.count]
-                    let day = data[i] as! [String: Any]
+                    //let str = json["timezone"] as! String
+                    record.city = name
+                    let day = element as! [String: Any]
                     let tmp = day["time"] as! Double
                     record.time = String("\(Date(timeIntervalSince1970: tmp))".prefix(10))
                     record.icon = day["icon"] as! String

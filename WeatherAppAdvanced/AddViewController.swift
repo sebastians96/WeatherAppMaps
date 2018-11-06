@@ -9,45 +9,69 @@
 import UIKit
 
 protocol AddForecast {
-    func addNew(latitude: String, longtitude: String)
+    func addNew(latitude: String, longtitude: String, name: String)
 }
 
-class AddViewController: UIViewController {
-
+class AddViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let dispatchGroup = DispatchGroup()
     var delegate: AddForecast!
+    var nameLocations = [NameLocation]()
+    @IBOutlet weak var city: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    var latitude = ""
+    var longtitude = ""
+    private let nameFetcher = NameFetcher()
     
-    @IBOutlet weak var latitude: UITextField!
-    @IBOutlet weak var longtitude: UITextField!
-    
-    @IBAction func add(_ sender: UIBarButtonItem) {
-        if latitude != nil && longtitude != nil {
-            let lat = latitude.text!
-            let lon = longtitude.text!
-            delegate.addNew(latitude: lat,longtitude: lon)
-            navigationController?.popViewController(animated: true)
+    @IBAction func search(_ sender: UIButton) {
+        dispatchGroup.enter()
+        nameFetcher.fetchName(city: self.city.text!) { [weak self] (data:[NameLocation]) in
+            self?.nameLocations = data
+            self?.dispatchGroup.leave()
+        }
+        dispatchGroup.notify(queue: .main){
+            self.tableView.reloadData()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //tableView.delegate = self
+        //tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Table View
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
-    */
-
+    
+    func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int
+    {
+        return nameLocations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AddCell", for: indexPath)
+        let object = nameLocations[indexPath.row]
+        cell.textLabel?.text = object.title
+        return cell
+    }
+    
+    // MARK: - Segues
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            let lat = nameLocations[indexPath.row].latt
+            let lon = nameLocations[indexPath.row].long
+        delegate.addNew(latitude: lat,longtitude: lon,name: nameLocations[indexPath.row].title)
+            navigationController?.popViewController(animated: true)
+    }
 }
+

@@ -108,19 +108,19 @@ class MasterViewController: UITableViewController,AddForecast {
     
     func populateInitialCities() {
         dispatchGroup.enter()
-        weatherFetcher.fetchWeather(lat: "52.237049",lon: "21.017532") { [weak self] (data:[WeatherData]) in
+        weatherFetcher.fetchWeather(lat: "52.235352",lon: "21.009390", name: "Warsaw") { [weak self] (data:[WeatherData]) in
             // Warsaw
             self?.forecasts.append(data)
             self?.dispatchGroup.leave()
         }
         dispatchGroup.enter()
-        weatherFetcher.fetchWeather(lat: "48.864716",lon: "2.349014") { [weak self] (data:[WeatherData]) in
+        weatherFetcher.fetchWeather(lat: "52.516071",lon: "13.376980", name: "Berlin") { [weak self] (data:[WeatherData]) in
             // Berlin
             self?.forecasts.append(data)
             self?.dispatchGroup.leave()
         }
         dispatchGroup.enter()
-        weatherFetcher.fetchWeather(lat: "37.983810",lon: "23.727539") { [weak self] (data:[WeatherData]) in
+        weatherFetcher.fetchWeather(lat: "37.976151",lon: "23.736410", name: "Athens") { [weak self] (data:[WeatherData]) in
             // Athens
             self?.forecasts.append(data)
             self?.dispatchGroup.leave()
@@ -128,9 +128,9 @@ class MasterViewController: UITableViewController,AddForecast {
         
     }
     
-    func addNew(latitude: String, longtitude: String) {
+    func addNew(latitude: String, longtitude: String, name: String) {
         dispatchGroup.enter()
-        weatherFetcher.fetchWeather(lat: latitude,lon: longtitude) { [weak self] (data:[WeatherData]) in
+        weatherFetcher.fetchWeather(lat: latitude,lon: longtitude, name: name) { [weak self] (data:[WeatherData]) in
             self?.forecasts.append(data)
             self?.dispatchGroup.leave()
         }
