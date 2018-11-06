@@ -16,7 +16,7 @@ struct NameLocation {
 
 class NameFetcher {
     
-    func fetchName (city: String,completion: @escaping ((_ data: [NameLocation])-> Void)){
+    static func fetchName (city: String,completion: @escaping ((_ data: [NameLocation])-> Void)){
         var locationList : [NameLocation] = []
         let  apiURL = URL(string: "https://www.metaweather.com/api/location/search/?query=" + city)
         let session = URLSession.shared

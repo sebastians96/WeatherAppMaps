@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B2546792190FADF0000D15B /* NameFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2546782190FADF0000D15B /* NameFetcher.swift */; };
-		2B25467B2191283D0000D15B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2B25467A2191283D0000D15B /* Default-568h@2x.png */; };
+		2B25467F21913E910000D15B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B25467E21913E910000D15B /* MapViewController.swift */; };
 		2B5BDFE5218423D900EF388D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BDFE4218423D900EF388D /* AppDelegate.swift */; };
 		2B5BDFE7218423D900EF388D /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BDFE6218423D900EF388D /* MasterViewController.swift */; };
 		2B5BDFE9218423D900EF388D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B5BDFE8218423D900EF388D /* DetailViewController.swift */; };
@@ -22,7 +22,7 @@
 
 /* Begin PBXFileReference section */
 		2B2546782190FADF0000D15B /* NameFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameFetcher.swift; sourceTree = "<group>"; };
-		2B25467A2191283D0000D15B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2B25467E21913E910000D15B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		2B5BDFE1218423D900EF388D /* WeatherAppMaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAppMaps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B5BDFE4218423D900EF388D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B5BDFE6218423D900EF388D /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +50,6 @@
 		2B5BDFD8218423D900EF388D = {
 			isa = PBXGroup;
 			children = (
-				2B25467A2191283D0000D15B /* Default-568h@2x.png */,
 				2B5BDFE3218423D900EF388D /* WeatherAppMaps */,
 				2B5BDFE2218423D900EF388D /* Products */,
 			);
@@ -70,6 +69,7 @@
 				2B2546782190FADF0000D15B /* NameFetcher.swift */,
 				2B5BDFE4218423D900EF388D /* AppDelegate.swift */,
 				2B5BDFE6218423D900EF388D /* MasterViewController.swift */,
+				2B25467E21913E910000D15B /* MapViewController.swift */,
 				2B5BDFE8218423D900EF388D /* DetailViewController.swift */,
 				2B5BDFFA218424C700EF388D /* WeatherFetcher.swift */,
 				2B5BDFEA218423D900EF388D /* Main.storyboard */,
@@ -142,7 +142,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B5BDFF1218423D900EF388D /* LaunchScreen.storyboard in Resources */,
-				2B25467B2191283D0000D15B /* Default-568h@2x.png in Resources */,
 				2B5BDFEE218423D900EF388D /* Assets.xcassets in Resources */,
 				2B5BDFEC218423D900EF388D /* Main.storyboard in Resources */,
 			);
@@ -162,6 +161,7 @@
 				2B5BDFE7218423D900EF388D /* MasterViewController.swift in Sources */,
 				2B5BDFFF2184252E00EF388D /* TableViewCell.swift in Sources */,
 				2B5BDFE5218423D900EF388D /* AppDelegate.swift in Sources */,
+				2B25467F21913E910000D15B /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

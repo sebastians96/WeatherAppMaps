@@ -65,5 +65,12 @@ class DetailViewController: UIViewController {
         UpdateController(weather: forecast!)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mapSegue" {
+            let MVC = segue.destination as! MapViewController
+            MVC.setLocation(name: self.city.title!)
+        }
+    }
+    
 }
 

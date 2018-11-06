@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 protocol AddForecast {
     func addNew(latitude: String, longtitude: String, name: String)
@@ -21,11 +23,12 @@ class AddViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var tableView: UITableView!
     var latitude = ""
     var longtitude = ""
-    private let nameFetcher = NameFetcher()
+    var manager:CLLocationManager!
+    var myLocations: [CLLocation] = []
     
     @IBAction func search(_ sender: UIButton) {
         dispatchGroup.enter()
-        nameFetcher.fetchName(city: self.city.text!) { [weak self] (data:[NameLocation]) in
+        NameFetcher.fetchName(city: self.city.text!) { [weak self] (data:[NameLocation]) in
             self?.nameLocations = data
             self?.dispatchGroup.leave()
         }
@@ -36,9 +39,16 @@ class AddViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //tableView.delegate = self
-        //tableView.dataSource = self
+        
         // Do any additional setup after loading the view.
+        manager = CLLocationManager()
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestAlwaysAuthorization()
+        manager.startUpdatingLocation()
+        currentLocationCell()
+        dispatchGroup.notify(queue: .main){
+            self.tableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,5 +83,18 @@ class AddViewController: UIViewController, UITableViewDelegate, UITableViewDataS
         delegate.addNew(latitude: lat,longtitude: lon,name: nameLocations[indexPath.row].title)
             navigationController?.popViewController(animated: true)
     }
+    
+    func currentLocationCell() {
+//        dispatchGroup.enter()
+//        // get current location
+//        manager.requestLocation()
+//        let current = myLocations.last
+//        var loc = NameLocation()
+//        loc.latt = String(describing: current?.coordinate.latitude)
+//        loc.long = String(describing: current?.coordinate.longitude)
+//        loc.title = "Twoja akutalna lokalizacja"
+//        self.nameLocations.append(loc)
+//        self.dispatchGroup.leave()
+        }
 }
 
