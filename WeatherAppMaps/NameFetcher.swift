@@ -18,13 +18,19 @@ class NameFetcher {
     
     static func fetchName (city: String,completion: @escaping ((_ data: [NameLocation])-> Void)){
         var locationList : [NameLocation] = []
-        let  apiURL = URL(string: "https://www.metaweather.com/api/location/search/?query=" + city)
+        var checkedCity = ""
+        if city.contains(" ") {
+            checkedCity = city.replacingOccurrences(of: " ", with: "%20")
+        } else {
+            checkedCity = city
+        }
+        let  apiURL = URL(string: "https://www.metaweather.com/api/location/search/?query=" + checkedCity)
         let session = URLSession.shared
         let task = session.dataTask(with: apiURL!){ (data, _, error) in
             if let error = error {
                 print("Request Did Fail (\(error)")
             }
-            else
+            else if city != ""
             {
                 let json = try! JSONSerialization.jsonObject(with: data!, options: []) as! [AnyObject]
                 for element in json {

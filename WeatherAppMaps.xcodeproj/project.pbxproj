@@ -52,6 +52,7 @@
 			children = (
 				2B5BDFE3218423D900EF388D /* WeatherAppMaps */,
 				2B5BDFE2218423D900EF388D /* Products */,
+				3F5D5C3A2191A992003CFAC6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,6 +81,13 @@
 				2B5BDFF2218423D900EF388D /* Info.plist */,
 			);
 			path = WeatherAppMaps;
+			sourceTree = "<group>";
+		};
+		3F5D5C3A2191A992003CFAC6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,6 +123,11 @@
 					2B5BDFE0218423D900EF388D = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

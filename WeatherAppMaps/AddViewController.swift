@@ -14,7 +14,7 @@ protocol AddForecast {
     func addNew(latitude: String, longtitude: String, name: String)
 }
 
-class AddViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AddViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     let dispatchGroup = DispatchGroup()
     var delegate: AddForecast!
@@ -25,6 +25,8 @@ class AddViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     var longtitude = ""
     var manager:CLLocationManager!
     var myLocations: [CLLocation] = []
+    var geocoder = CLGeocoder()
+    var cityName = ""
     
     @IBAction func search(_ sender: UIButton) {
         dispatchGroup.enter()
@@ -40,15 +42,15 @@ class AddViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        manager = CLLocationManager()
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestAlwaysAuthorization()
-        manager.startUpdatingLocation()
-        currentLocationCell()
-        dispatchGroup.notify(queue: .main){
-            self.tableView.reloadData()
+        if (CLLocationManager.locationServicesEnabled())
+        {
+            manager = CLLocationManager()
+            manager.delegate = self
+            manager.desiredAccuracy = kCLLocationAccuracyBest
+            manager.requestAlwaysAuthorization()
+            manager.requestWhenInUseAuthorization()
         }
+        manager.requestLocation()
     }
     
     override func didReceiveMemoryWarning() {
@@ -84,17 +86,44 @@ class AddViewController: UIViewController, UITableViewDelegate, UITableViewDataS
             navigationController?.popViewController(animated: true)
     }
     
-    func currentLocationCell() {
-//        dispatchGroup.enter()
-//        // get current location
-//        manager.requestLocation()
-//        let current = myLocations.last
-//        var loc = NameLocation()
-//        loc.latt = String(describing: current?.coordinate.latitude)
-//        loc.long = String(describing: current?.coordinate.longitude)
-//        loc.title = "Twoja akutalna lokalizacja"
-//        self.nameLocations.append(loc)
-//        self.dispatchGroup.leave()
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error:: \(error.localizedDescription)")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            self.manager.requestLocation()
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            let current = manager.location!.coordinate
+            var loc = NameLocation()
+            loc.latt = String(describing: current.latitude)
+            loc.long = String(describing: current.longitude)
+            geocoder.reverseGeocodeLocation(manager.location!) { (placemarks, error) in
+                self.processResponse(withPlacemarks: placemarks, error: error)
+                loc.title = "Aktualnie znajdujesz się w: " + (placemarks?.first?.locality!)!
+                self.nameLocations.append(loc)
+                self.tableView.reloadData()
+            }
+            //print("latt: " + loc.latt + "   long: " + loc.latt)
+        
+    }
+    
+    private func processResponse(withPlacemarks placemarks: [CLPlacemark]?, error: Error?) {
+        if let error = error {
+            print("Unable to Reverse Geocode Location (\(error))")
+            cityName = "Unable to Find Address for Location"
+            
+        } else {
+            if let placemarks = placemarks, let placemark = placemarks.first {
+                cityName = placemark.locality!
+            } else {
+                cityName = "No Matching Addresses Found"
+            }
+        }
+    }
+    
 }
 

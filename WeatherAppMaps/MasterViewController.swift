@@ -130,7 +130,13 @@ class MasterViewController: UITableViewController,AddForecast {
     
     func addNew(latitude: String, longtitude: String, name: String) {
         dispatchGroup.enter()
-        weatherFetcher.fetchWeather(lat: latitude,lon: longtitude, name: name) { [weak self] (data:[WeatherData]) in
+        var city = ""
+        if name.range(of:"Aktualnie znajdujesz się w: ") != nil {
+            city = String(name.dropFirst(28))
+        } else {
+            city = name
+        }
+        weatherFetcher.fetchWeather(lat: latitude,lon: longtitude, name: city) { [weak self] (data:[WeatherData]) in
             self?.forecasts.append(data)
             self?.dispatchGroup.leave()
         }
